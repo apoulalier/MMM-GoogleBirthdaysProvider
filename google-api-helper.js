@@ -6,8 +6,9 @@ const readFile = promisify(fs.readFile);
 readAuthenticationFiles = function(modulePath) {
     return new Promise((resolve, reject) => {
         Promise.all([
-            readFile(`${modulePath}/google-api-credentials/credentials.json`),
-            readFile(`${modulePath}/google-api-credentials/token.json`)
+            readFile(`${modulePath}/../../config/GoogleToken/credentials.json`),
+            readFile(`${modulePath}/../../config/GoogleToken/token.json`)
+            
         ]).then(values => {
             var credentials = JSON.parse(values[0]);
             var token = JSON.parse(values[1]);
